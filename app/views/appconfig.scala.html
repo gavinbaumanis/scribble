@@ -1,0 +1,49 @@
+ @(AppConfig: Form[controllers.CreateAppConfigForm])(implicit messages: Messages)
+ 
+ @import helper._
+ 
+ 
+ @* 
+   * main() is a function used to "hold" the MAIN content of the page requested.
+   * It is passed into /views/main.scala.html which is a Layout template.
+   *@
+   
+@main("ScalaBlog - Application Settings / Configuration") {
+
+    <!--  This isn't strictly a Blog-post but we'll use the same styling!  -->
+    <div class="blog-header">
+        <h1 class="blog-title">ScalaBlog</h1>
+        <p class="lead blog-description">Application Configuration</p>
+    </div><!--  /.blog-header -->
+    
+    @* 
+     * The following DIV element is used just for styling. It is not necessary. 
+     *	
+     * The noteworthy part of the DIV is the creation of the form and the form 
+     * input elements by use of the Play framework's "helpers"
+     * 
+     * @form() is passed the controller method that will act as the ACTION
+     * via "routes.Application.appconfigsubmit()"
+     *
+     * The form is passed in at the forst line of THIS template and is named AppConfig 
+     *	
+     * We can then pass in the form items by constructing form contents via the Play helpers
+     * (Eg. @inputText(AppConfig("blogtitle")))
+     * 
+     * The string provided is the field name and ID ("blogtitle").
+     * it is also used to map a field label, via the /conf/messages file.
+     * 
+    *@  
+    <div class="blog-post">  
+		@form(controllers.routes.Application.appconfigsubmit()) {
+			@inputText(AppConfig("blogtitle"))
+			@inputText(AppConfig("blogtagline"))
+			@inputText(AppConfig("blogtitleimage"))
+			@inputText(AppConfig("blogurl"))
+			@inputText(AppConfig("accurateAt"))
+			@inputText(AppConfig("modifiedBy"))
+			<br />
+        	<input type="submit" value="Submit"></input>
+		} <!-- /.form -->	
+    </div><!-- /.blog-post -->
+}

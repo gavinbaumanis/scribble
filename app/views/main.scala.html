@@ -1,0 +1,71 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+ 
+  @* 
+   * This is the layout template for the application.
+   *@
+   
+ <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="ScalaBlog, Blog Application written in Scala">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <meta name="author" content="Gavin Baumanis">
+    
+    <title>@title</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="@routes.Assets.at("stylesheets/bootstrap.min.css")" rel="stylesheet">
+
+    <!-- Custom styles for this Blog / Add your changes within here! -->
+    <link href="@routes.Assets.at("stylesheets/blog.css")" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="@routes.Assets.at("javascripts/html5shiv.min.js")"></script>
+      <script src="@routes.Assets.at("javascripts/respond.min.js")"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- This is the header / Navigation -->
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="@controllers.routes.Application.index()">Home</a>
+          <a class="blog-nav-item" href="#">About</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 
+        This is the CSS container for the main content of the page 
+            It is inserted dynamically.
+            This is just the "layout" page! 
+    -->
+    <div class="container">
+        
+        @content
+          
+    </div><!-- /.container -->
+
+    <!--- This is the footer -->
+    <footer class="blog-footer">
+       <p><a href="@controllers.routes.Application.index()">Home</a> | <a href="@controllers.routes.Application.sysconfig()">System Admin</a></p>
+       
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="@routes.Assets.at("javascripts/jquery-1.11.2.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="@routes.Assets.at("javascripts/ie10-viewport-bug-workaround.js")"></script>
+  </body>
+</html>
