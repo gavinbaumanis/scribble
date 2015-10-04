@@ -1,4 +1,4 @@
-name := "scalaBlog"
+name := "scribble"
 
 version := "0.1"
 
